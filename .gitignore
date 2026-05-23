@@ -1,6 +1,20 @@
 # .gitignore
+# Python
 __pycache__/
 *.pyc
+*.pyo
 venv/
+env/
+
+# Environment variables (passwords!)
 .env
-*.sql
+
+# Database
+*.sql.bak
+
+# VS Code
+.vscode/
+
+# Windows
+Thumbs.db
+desktop.ini
