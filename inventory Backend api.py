@@ -1,9 +1,4 @@
-# ============================================================
-#  INVENTORY MANAGEMENT SYSTEM — Flask Backend API
-#  Table column: Productname (matches your MySQL table)
-#  Run: python app.py
-#  URL: http://localhost:5000
-# ============================================================
+
 
 from flask import Flask, jsonify, request
 from flask_cors import CORS
@@ -14,10 +9,6 @@ import traceback
 app = Flask(__name__)
 CORS(app)
 
-# ============================================================
-# DATABASE CONNECTION
-# Change password="" to your MySQL password if you have one
-# ============================================================
 
 def get_db():
     try:
@@ -25,7 +16,7 @@ def get_db():
             host     = "localhost",
             database = "inventory_db",
             user     = "root",
-            password = "Bca100"          # ← your MySQL password here (empty if none)
+            password = "Bca100"         
         )
         return conn
     except Error as e:
@@ -144,7 +135,7 @@ def add_product():
         ), fetch=False)
 
         if rows:
-            # Auto create inventory row with 0 stock
+          
             new_p = run_query("SELECT id FROM products WHERE HSNcode = %s", (data['HSNcode'],))
             if new_p:
                 run_query(
