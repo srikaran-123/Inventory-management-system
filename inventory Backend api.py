@@ -10,6 +10,9 @@ from flask_cors import CORS
 import mysql.connector
 from mysql.connector import Error
 import traceback
+from dotenv import load_dotenv
+import os
+load_dotenv()
 
 app = Flask(__name__)
 CORS(app)
@@ -22,10 +25,10 @@ CORS(app)
 def get_db():
     try:
         conn = mysql.connector.connect(
-            host     = "localhost",
-            database = "inventory_db",
-            user     = "root",
-            password = "Bca100"          # ← your MySQL password here (empty if none)
+            host     = os.getenv('DB_HOST'),
+            database = os.getenv('DB_NAME'),
+            user     = os.getenv('DB_USER'),
+            password = os.getenv('DB_PASSWORD')         # ← your MySQL password here (empty if none)
         )
         return conn
     except Error as e:
